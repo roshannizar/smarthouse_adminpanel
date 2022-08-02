@@ -1,0 +1,102 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Inventory</h4>
+                                <p class="card-subtitle">Now you can view inventory details</p>
+                            </div>
+                            <!-- <div class="col-md-6">
+                                <button class="btn btn-primary create-btn pull-right" (click)="openFilterDialog()"><span
+                                        class="material-icons"><span class="material-icons-outlined">
+                                            filter_alt</span></span></button>
+                                <button class="btn btn-primary create-btn pull-right"><span class="material-icons"><span
+                                            class="material-icons-outlined">
+                                            qr_code</span></span></button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Images
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Investor
+                                    </th>
+                                    <th>
+                                        Weight
+                                    </th>
+                                    <th>
+                                        Measurement
+                                    </th>
+                                    <th>Total Cost(£)</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="isBlock">
+                                        <td colspan="8">
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="inventories.length == 0 && isBlock == false" class="text-center">
+                                        <td colspan="8">
+                                            <span class="font-italic">No record found!</span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let inventory of inventories; let i = index">
+                                        <td>{{i + 1}}</td>
+                                        <td class="image-viewer" (click)="openImageDialog(inventory)">View Images</td>
+                                        <td>{{inventory.name}}</td>
+                                        <td>{{inventory.investment?.firstName || ''}} {{inventory.investment?.lastName
+                                            || 'N/A'}}</td>
+                                        <td>{{inventory.weight}}</td>
+                                        <td>{{inventory.measurement}}</td>
+                                        <td>{{getTotalCost(inventory) | number: '1.2-2'}}
+                                        </td>
+                                        <td>
+                                            <i class="material-icons btn-view"
+                                                (click)="openViewModal(inventory)">visibility</i>
+                                            <i class="material-icons btn-view"
+                                                (click)="openUpdateDialog(inventory)">create</i>
+                                                <i class="material-icons btn-view"
+                                                (click)="openDeleteModal(inventory)">delete</i>
+                                            <i class="material-icons btn-view"
+                                                (click)="openPrintDialog(inventory.id)">print</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<aside class="aside-right" [ngClass]="{'open': isDisplay}">
+    <div *ngIf='isDisplay'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-inventory-view-dlg *ngIf="inventory != null && !isDelete" [inventory]="inventory">
+        </app-inventory-view-dlg>
+        <app-inventory-delete *ngIf="inventory != null && isDelete" [inventory]="inventory" (deleted)="refresh()">
+        </app-inventory-delete>
+    </div>
+</aside>

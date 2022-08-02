@@ -1,0 +1,12 @@
+<form [formGroup]="appForm">
+    <p>Are you sure that you want to remove '<strong>{{appName}}</strong>'</p>
+    <input matInput placeholder="Enter name to confirm" style="border-bottom: 2px solid black;" required
+        formControlName="name">
+    <br /><br />
+    <button class="btn btn-primary" *ngIf="!block" [disabled]="appForm.invalid" (click)="confirm()">Delete</button>
+    <div class="align-right" *ngIf="block">
+        <app-loading-ui [block]="block"></app-loading-ui>
+    </div>
+    <br />
+    <label style="font-weight: bold;color: red;" *ngIf="error">Could not match the name</label>
+</form>

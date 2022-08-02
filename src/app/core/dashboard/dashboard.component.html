@@ -1,0 +1,199 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">content_copy</i>
+                        </div>
+                        <p class="card-category">Products</p>
+                        <h3 class="card-title">{{dashboardModel.totalStocks || '0'}}
+                            <small></small>
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons text-danger">warning</i>
+                            Total Products Available
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">store</i>
+                        </div>
+                        <p class="card-category">Sales</p>
+                        <h3 class="card-title">{{dashboardModel.totalSales || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">history</i> Last 24 Hours
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">money</i>
+                        </div>
+                        <p class="card-category">Investors</p>
+                        <h3 class="card-title">{{dashboardModel.totalInvestor || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">info_outline</i> Tracked from Investors
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">account_box</i>
+                        </div>
+                        <p class="card-category">Customer</p>
+                        <h3 class="card-title">{{dashboardModel.totalCustomers || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">account_box</i>Total Customers Found
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">inventory_2</i>
+                        </div>
+                        <p class="card-category">Purchase</p>
+                        <h3 class="card-title">{{dashboardModel.totalPurchases || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">account_box</i>Total Purchase Available
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-code card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">timer_sand</i>
+                        </div>
+                        <p class="card-category">Pending Sales</p>
+                        <h3 class="card-title">{{dashboardModel.totalPendingSales || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">account_box</i>Total Sales pending
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-subs card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">local_shipping</i>
+                        </div>
+                        <p class="card-category">Suppliers</p>
+                        <h3 class="card-title">{{dashboardModel.totalSupplier || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">account_box</i>Total Suppliers
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning-top">
+                        <h4 class="card-title">Top 5 Investors</h4>
+                        <p class="card-category">Based on investors investment</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning-top">
+                                <th>Full Name</th>
+                                <th>Total Investment (£)</th>
+                                <th>Balance (£)</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="block">
+                                    <td colspan="3">
+                                        <app-loading-ui [block]="block"></app-loading-ui>
+                                    </td>
+                                </tr>
+
+                                <tr *ngIf="dashboardModel.investors.length === 0 && !block">
+                                    <td colspan="3" style="text-align: center;">
+                                        No Records Found!
+                                    </td>
+                                </tr>
+
+                                <tr *ngFor="let investor of dashboardModel.investors">
+                                    <td>{{investor.firstName}} {{investor.lastName}}</td>
+                                    <td>{{investor.fund | number: '1.2-2'}}</td>
+                                    <td>{{investor.balance | number: '1.2-2'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning-top">
+                        <h4 class="card-title">Top 5 Customers</h4>
+                        <p class="card-category">Based on sales</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning-top">
+                                <th>Full Name</th>
+                                <th>Email Address</th>
+                                <th>Amount</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="block">
+                                    <td colspan="3">
+                                        <app-loading-ui [block]="block"></app-loading-ui>
+                                    </td>
+                                </tr>
+
+                                <tr *ngIf="dashboardModel.customers.length === 0 && !block">
+                                    <td colspan="3" style="text-align: center;">
+                                        No Records Found!
+                                    </td>
+                                </tr>
+
+                                <tr *ngFor="let customer of dashboardModel.customers">
+                                    <td>{{customer.firstName}} {{customer.lastName}}</td>
+                                    <td>{{customer.email}}</td>
+                                    <td>{{customer.totalAmount | currency:'£'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

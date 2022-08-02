@@ -1,0 +1,11 @@
+.more-btn {
+    outline: none;
+    border:none;
+    border-radius: 5px;
+}
+.more-margin-top {
+    margin-top: 25px;
+}
+.small-line {
+    line-height: 25px;
+}
