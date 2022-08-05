@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Create Garbage/h1>
+<div mat-dialog-content>
+    <div class="container">
+        <form [formGroup]="garbageGroup" class="row">
+            <div class="col-md-6">
+                <ng-select placeholder="Select Garbage Type" formControlName="garbageType" (change)="onSelectGarbageType($event)">
+                    <ng-option [value]="0">Plastic</ng-option>
+                    <ng-option [value]="1">Organic</ng-option>
+                    <ng-option [value]="2">Glass</ng-option>
+                    <ng-option [value]="3">Others</ng-option>
+                </ng-select>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Weight" formControlName="weight" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field appearance="fill">
+                    <mat-label>Collecting Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="collectingDate" (dateChange)="onSelectDate('input', $event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="isBlock">
+    <app-loading-ui [block]="isBlock"></app-loading-ui>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="!isBlock">
+    <button mat-button (click)="close('close')">Cancel</button>
+    <button mat-button id="btn-update" [disabled]="garbageGroup.invalid" (click)="onUpdate()">Save</button>
+</div>

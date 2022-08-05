@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  endpointUrl: 'https://localhost:44362/api',
+  endpointUrl: 'https://localhost:44339/api',
   signalrRUrl: 'https://localhost:44362/message',
   cloudStorageUrl: 'https://smarthouse-cloud.herokuapp.com/api',
   production: false

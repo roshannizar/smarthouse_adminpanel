@@ -1,0 +1,93 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Rent</h4>
+                                <p class="card-subtitle">Now you can view rent</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search" class="mat-input" (input)="searchRent()">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateDialog()">New</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Type
+                                    </th>
+                                    <th>
+                                        Weight
+                                    </th>
+                                    <th>
+                                        User
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="isBlock">
+                                        <td colspan="6">
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="rents.length == 0 && isBlock == false" class="text-center">
+                                        <td colspan="6">
+                                            <span class="font-italic">No record found!</span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let rent of rents; let i = index">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{rent.name}}</td>
+                                        <td>{{rent.amount | number: '1.2-2'}}</td>
+                                        <td>{{rent.user?.firstName || 'N/A'}} {{rent.user?.lastName}}</td>
+                                        <td>{{rent.paidDate | date: 'medium'}}</td>
+                                        <td>
+                                            <i class="material-icons btn-view"
+                                                (click)="openViewModal(rent)">visibility</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openUpdateDialog(rent)">create</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openDeleteModal(rent)">delete</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<aside class="aside-right" [ngClass]="{'open': isDisplay}">
+    <div *ngIf='isDisplay'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-rent-view-dlg *ngIf="rent != null && !isDelete" [rent]="rent">
+        </app-rent-view-dlg>
+        <app-rent-delete *ngIf="rent != null && isDelete" [rent]="rent" (deleted)="refresh()">
+        </app-rent-delete>
+    </div>
+</aside>

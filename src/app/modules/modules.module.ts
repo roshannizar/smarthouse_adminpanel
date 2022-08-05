@@ -50,6 +50,14 @@ import { SearchViewComponent } from './search-management/components/search-view/
 import { OrderViewDlgComponent } from './order-management/components/order-view-dlg/order-view-dlg.component';
 import { PaymentModalComponent } from './order-management/modals/payment-modal/payment-modal.component';
 import { InvoiceModalComponent } from './order-management/modals/invoice-modal/invoice-modal.component';
+import { GarbageViewComponent } from './garbage-management/components/garbage-view/garbage-view.component';
+import { GarbageCreateComponent } from './garbage-management/components/garbage-create/garbage-create.component';
+import { GarbageUpdateComponent } from './garbage-management/components/garbage-update/garbage-update.component';
+import { GarbageDeleteComponent } from './garbage-management/components/garbage-delete/garbage-delete.component';
+import { RentCreateComponent } from './rent-management/components/rent-create/rent-create.component';
+import { RentViewComponent } from './rent-management/components/rent-view/rent-view.component';
+import { RentUpdateComponent } from './rent-management/components/rent-update/rent-update.component';
+import { RentDeleteComponent } from './rent-management/components/rent-delete/rent-delete.component';
 
 
 @NgModule({
@@ -57,12 +65,16 @@ import { InvoiceModalComponent } from './order-management/modals/invoice-modal/i
     MoreProductsComponent, UserViewComponent, LastLoggedComponent,
     SalesReportComponent, ProductReportComponent, ReportsComponent, FilterDialogComponent,
     InvestmentCreateComponent, InvestmentViewComponent, InvestmentUpdateComponent, InvestmentDeleteComponent,
-    InventoryDeleteComponent, InventoryViewComponent, InventoryUpdateComponent, 
+    InventoryDeleteComponent, InventoryViewComponent, InventoryUpdateComponent,
     SupplierUpdateComponent, SupplierCreateComponent,
     SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent,
     PurchaseCreateComponent, PurchaseUpdateComponent, OrderViewComponent,
     CustomerViewComponent, CustomerCreateComponent, CustomerUpdateComponent, CustomerDeleteComponent,
-    OrderCreateComponent, InvestmentViewDlgComponent, SupplierViewDlgComponent, PurchaseViewDlgComponent, CustomerViewDlgComponent, MoveProductComponent, PaymentViewComponent, PaymentUpdateComponent, PrintDlgComponent, InventoryViewDlgComponent, ImageViewDlgComponent, ProfileViewComponent, PrivateCodeViewComponent, PrivateCodeCreateComponent, PrivateCodeUpdateComponent, PrivateCodeDeleteComponent, PrivateCodeViewDlgComponent, SearchViewComponent, OrderViewDlgComponent, PaymentModalComponent, InvoiceModalComponent],
+    OrderCreateComponent, InvestmentViewDlgComponent, SupplierViewDlgComponent, PurchaseViewDlgComponent, CustomerViewDlgComponent,
+    MoveProductComponent, PaymentViewComponent, PaymentUpdateComponent, PrintDlgComponent, InventoryViewDlgComponent,
+    ImageViewDlgComponent, ProfileViewComponent, PrivateCodeViewComponent, PrivateCodeCreateComponent, PrivateCodeUpdateComponent,
+    PrivateCodeDeleteComponent, PrivateCodeViewDlgComponent, SearchViewComponent, OrderViewDlgComponent, PaymentModalComponent,
+    InvoiceModalComponent, GarbageViewComponent, GarbageCreateComponent, GarbageUpdateComponent, GarbageDeleteComponent, RentCreateComponent, RentViewComponent, RentUpdateComponent, RentDeleteComponent],
   imports: [
     CommonModule,
     SharedModule,

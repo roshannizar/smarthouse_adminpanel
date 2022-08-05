@@ -16,11 +16,14 @@ import { SearchViewComponent } from 'app/modules/search-management/components/se
 import { OrderViewComponent } from 'app/modules/order-management/components/order-view/order-view.component';
 import { OrderCreateComponent } from 'app/modules/order-management/components/order-create/order-create.component';
 import { ReportsComponent } from 'app/modules/more-management/components/reports/reports.component';
-import { InvoiceModalComponent } from 'app/modules/order-management/modals/invoice-modal/invoice-modal.component';
+import { GarbageViewComponent } from 'app/modules/garbage-management/components/garbage-view/garbage-view.component';
+import { RentViewComponent } from 'app/modules/rent-management/components/rent-view/rent-view.component';
 
 export const AdminLayoutRoutes: Routes = [
 
     { path: 'dashboard', component: DashboardComponent },
+    { path: 'garbage', component: GarbageViewComponent },
+    { path: 'rent', component: RentViewComponent },
     { path: 'inventory', component: InventoryViewComponent },
     { path: 'search', component: SearchViewComponent },
     { path: 'purchase', component: PurchaseViewComponent },
