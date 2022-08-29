@@ -5,7 +5,7 @@
 
 export const environment = {
   endpointUrl: 'https://localhost:44339/api',
-  signalrRUrl: 'https://localhost:44362/message',
+  signalrRUrl: 'https://localhost:44339/message',
   cloudStorageUrl: 'https://smarthouse-cloud.herokuapp.com/api',
   production: false
 };

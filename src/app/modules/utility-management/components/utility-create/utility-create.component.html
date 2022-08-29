@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>Update Rent</h1>
+<h1 mat-dialog-title>Create Utility</h1>
 <div mat-dialog-content>
     <div class="container">
-        <form [formGroup]="rentGroup" class="row">
+        <form [formGroup]="utilityGroup" class="row">
             <div class="col-md-6">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Name" formControlName="name" required>
+                    <input matInput placeholder="Enter Account Number" formControlName="accountNumber" required>
                 </mat-form-field>
             </div>
             <div class="col-md-6">
@@ -12,13 +12,10 @@
                     <input matInput placeholder="Enter Amount" formControlName="amount" required>
                 </mat-form-field>
             </div>
-            <div class="col-md-12">
-                <mat-form-field appearance="fill">
-                    <mat-label>Payment Date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="paidDate" (dateChange)="onSelectDate('input', $event)">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Type" formControlName="type" required>
+                </mat-form-field>
             </div>
         </form>
     </div>
@@ -30,5 +27,5 @@
 
 <div mat-dialog-actions class="align-right" *ngIf="!isBlock">
     <button mat-button (click)="close('close')">Cancel</button>
-    <button mat-button id="btn-update" [disabled]="rentGroup.invalid" (click)="onUpdate()">Save</button>
+    <button mat-button id="btn-update" [disabled]="utilityGroup.invalid" (click)="onSave()">Save</button>
 </div>

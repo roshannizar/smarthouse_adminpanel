@@ -26,7 +26,7 @@ export class AuthService extends BaseService<AuthResponseModel> {
         const token = localStorage.getItem('session');
         try {
             const payload = this.jwtHelper.decodeToken(token);
-            if (payload?.role === 'SuperAdmin' || payload?.role === 'Admin') {
+            if (payload?.role === 'User' || payload?.role === 'Admin') {
                 return true;
             } else {
                 this.toaster.warning('Access Denied for this credentials!');

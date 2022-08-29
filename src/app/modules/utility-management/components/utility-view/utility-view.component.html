@@ -6,12 +6,12 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="card-title mt-0">Rent</h4>
-                                <p class="card-subtitle">Now you can view rent</p>
+                                <h4 class="card-title mt-0">Utility</h4>
+                                <p class="card-subtitle">Now you can view utility</p>
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search" class="mat-input" (input)="searchRent()">
+                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search" class="mat-input" (input)="searchUtility()">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-2">
@@ -28,41 +28,40 @@
                                         #
                                     </th>
                                     <th>
-                                        Type
+                                        Account Number
                                     </th>
                                     <th>
-                                        Weight
+                                        Amount
+                                    </th>
+                                    <th>
+                                        Type
                                     </th>
                                     <th>
                                         User
                                     </th>
-                                    <th>
-                                        Date
-                                    </th>
-                                    <th>Actions</th>
                                 </thead>
                                 <tbody>
                                     <tr *ngIf="isBlock">
-                                        <td colspan="6">
+                                        <td colspan="4">
                                             <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="rents.length == 0 && isBlock == false" class="text-center">
-                                        <td colspan="6">
+                                    <tr *ngIf="utilities.length == 0 && isBlock == false" class="text-center">
+                                        <td colspan="4">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let rent of rents; let i = index">
+                                    <tr *ngFor="let utility of utilities; let i = index">
                                         <td>{{i + 1}}</td>
-                                        <td>{{rent.name}}</td>
-                                        <td>{{rent.amount | number: '1.2-2'}}</td>
-                                        <td>{{rent.user?.firstName || 'N/A'}} {{rent.user?.lastName}}</td>
-                                        <td>{{rent.paidDate | date: 'medium'}}</td>
+                                        <td>{{utility.accountNumber}}</td>
+                                        <td>{{utility.amount | number: '1.2-2'}}</td>
+                                        <td>{{utility.type}}</td>
+                                        <td>{{utility.user?.firstName || 'N/A'}} {{utility.user?.lastName}}</td>
                                         <td>
                                             <i class="material-icons btn-delete"
-                                                (click)="openUpdateDialog(rent)">create</i>
+                                                (click)="openUpdateDialog(utility)">create</i>
                                             <i class="material-icons btn-delete"
-                                                (click)="openDeleteModal(rent)">delete</i>
+                                                (click)="openDeleteModal(utility)">delete</i>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -83,9 +82,9 @@
                 <i class="material-icons">close</i>
             </a>
         </div>
-        <app-rent-view-dlg *ngIf="rent != null && !isDelete" [rent]="rent">
-        </app-rent-view-dlg>
-        <app-rent-delete *ngIf="rent != null && isDelete" [rent]="rent" (deleted)="refresh()">
-        </app-rent-delete>
+        <app-utility-view-dlg *ngIf="utility != null && !isDelete" [utility]="utility">
+        </app-utility-view-dlg>
+        <app-utility-delete *ngIf="utility != null && isDelete" [utility]="utility" (deleted)="refresh()">
+        </app-utility-delete>
     </div>
 </aside>

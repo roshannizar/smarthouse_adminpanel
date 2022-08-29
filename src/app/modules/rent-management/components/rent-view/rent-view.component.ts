@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { RentModel } from '../../models/rent-model';
-import { RentService } from '../../services/rent.services';
+import { RentService } from '../../services/rent.service';
 import { RentCreateComponent } from '../rent-create/rent-create.component';
+import { RentUpdateComponent } from '../rent-update/rent-update.component';
 
 @Component({
   selector: 'app-rent-view',
@@ -13,6 +14,12 @@ import { RentCreateComponent } from '../rent-create/rent-create.component';
 export class RentViewComponent implements OnInit {
 
   isBlock = false;
+  isDelete = false;
+  isDisplay = false;
+
+
+  search: string;
+  heading_text: string;
 
   rents = new Array<RentModel>();
   rent = new RentModel();
@@ -47,5 +54,42 @@ export class RentViewComponent implements OnInit {
         this.getRents();
       }
     });
+  }
+
+  openUpdateDialog(model: RentModel) {
+    const dialogRef = this.dialog.open(RentUpdateComponent, {
+      width: '400px',
+      data: model
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'refresh') {
+        this.getRents();
+      }
+    });
+  }
+
+  closeModal() {
+    this.isDisplay = false;
+    this.rent = null;
+    this.isDelete = false;
+  }
+
+  openViewModal(rent: RentModel) {
+    this.isDisplay = true;
+    this.heading_text = 'View Rent';
+    this.rent = rent;
+  }
+
+  openDeleteModal(rent: RentModel) {
+    this.isDelete = true;
+    this.rent = rent;
+    this.isDisplay = true;
+    this.heading_text = `Delete ${rent.id}`;
+  }
+
+  refresh(): void {
+    this.closeModal();
+    this.getRents();
   }
 }

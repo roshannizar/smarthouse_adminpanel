@@ -43,7 +43,7 @@ export class GarbageUpdateComponent implements OnInit {
       id: garbage.id,
       weight: garbage.weight,
       collectingDate: garbage.collectingDate,
-      garbageType: garbage.garbageType
+      garbageType: garbage.garbageType,
     });
   }
 

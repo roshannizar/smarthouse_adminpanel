@@ -58,6 +58,14 @@ import { RentCreateComponent } from './rent-management/components/rent-create/re
 import { RentViewComponent } from './rent-management/components/rent-view/rent-view.component';
 import { RentUpdateComponent } from './rent-management/components/rent-update/rent-update.component';
 import { RentDeleteComponent } from './rent-management/components/rent-delete/rent-delete.component';
+import { WaterBillCreateComponent } from './water-bill-management/components/water-bill-create/water-bill-create.component';
+import { WaterBillViewComponent } from './water-bill-management/components/water-bill-view/water-bill-view.component';
+import { WaterBillUpdateComponent } from './water-bill-management/components/water-bill-update/water-bill-update.component';
+import { WaterBillDeleteComponent } from './water-bill-management/components/water-bill-delete/water-bill-delete.component';
+import { UtilityViewComponent } from './utility-management/components/utility-view/utility-view.component';
+import { UtilityCreateComponent } from './utility-management/components/utility-create/utility-create.component';
+import { UtilityUpdateComponent } from './utility-management/components/utility-update/utility-update.component';
+import { UtilityDeleteComponent } from './utility-management/components/utility-delete/utility-delete.component';
 
 
 @NgModule({
@@ -74,7 +82,7 @@ import { RentDeleteComponent } from './rent-management/components/rent-delete/re
     MoveProductComponent, PaymentViewComponent, PaymentUpdateComponent, PrintDlgComponent, InventoryViewDlgComponent,
     ImageViewDlgComponent, ProfileViewComponent, PrivateCodeViewComponent, PrivateCodeCreateComponent, PrivateCodeUpdateComponent,
     PrivateCodeDeleteComponent, PrivateCodeViewDlgComponent, SearchViewComponent, OrderViewDlgComponent, PaymentModalComponent,
-    InvoiceModalComponent, GarbageViewComponent, GarbageCreateComponent, GarbageUpdateComponent, GarbageDeleteComponent, RentCreateComponent, RentViewComponent, RentUpdateComponent, RentDeleteComponent],
+    InvoiceModalComponent, GarbageViewComponent, GarbageCreateComponent, GarbageUpdateComponent, GarbageDeleteComponent, RentCreateComponent, RentViewComponent, RentUpdateComponent, RentDeleteComponent, WaterBillCreateComponent, WaterBillViewComponent, WaterBillUpdateComponent, WaterBillDeleteComponent, UtilityViewComponent, UtilityCreateComponent, UtilityUpdateComponent, UtilityDeleteComponent],
   imports: [
     CommonModule,
     SharedModule,

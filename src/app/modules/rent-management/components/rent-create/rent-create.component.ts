@@ -4,7 +4,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { RentModel } from '../../models/rent-model';
-import { RentService } from '../../services/rent.services';
+import { RentService } from '../../services/rent.service';
 import { RentViewComponent } from '../rent-view/rent-view.component';
 
 @Component({

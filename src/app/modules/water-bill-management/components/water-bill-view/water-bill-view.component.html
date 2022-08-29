@@ -6,12 +6,12 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="card-title mt-0">Rent</h4>
-                                <p class="card-subtitle">Now you can view rent</p>
+                                <h4 class="card-title mt-0">Water Bill</h4>
+                                <p class="card-subtitle">Now you can view Water Bill</p>
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search" class="mat-input" (input)="searchRent()">
+                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search" class="mat-input" (input)="searchWaterBill()">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-2">
@@ -28,7 +28,7 @@
                                         #
                                     </th>
                                     <th>
-                                        Type
+                                        Account Number
                                     </th>
                                     <th>
                                         Weight
@@ -47,22 +47,22 @@
                                             <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="rents.length == 0 && isBlock == false" class="text-center">
+                                    <tr *ngIf="waterBills.length == 0 && isBlock == false" class="text-center">
                                         <td colspan="6">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let rent of rents; let i = index">
+                                    <tr *ngFor="let waterBill of waterBills; let i = index">
                                         <td>{{i + 1}}</td>
-                                        <td>{{rent.name}}</td>
-                                        <td>{{rent.amount | number: '1.2-2'}}</td>
-                                        <td>{{rent.user?.firstName || 'N/A'}} {{rent.user?.lastName}}</td>
-                                        <td>{{rent.paidDate | date: 'medium'}}</td>
+                                        <td>{{waterBill.name}}</td>
+                                        <td>{{waterBill.amount | number: '1.2-2'}}</td>
+                                        <td>{{waterBill.user?.firstName || 'N/A'}} {{waterBill.user?.lastName}}</td>
+                                        <td>{{waterBill.paidDate | date: 'medium'}}</td>
                                         <td>
                                             <i class="material-icons btn-delete"
-                                                (click)="openUpdateDialog(rent)">create</i>
+                                                (click)="openUpdateDialog(waterBill)">create</i>
                                             <i class="material-icons btn-delete"
-                                                (click)="openDeleteModal(rent)">delete</i>
+                                                (click)="openDeleteModal(waterBill)">delete</i>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -83,9 +83,9 @@
                 <i class="material-icons">close</i>
             </a>
         </div>
-        <app-rent-view-dlg *ngIf="rent != null && !isDelete" [rent]="rent">
-        </app-rent-view-dlg>
-        <app-rent-delete *ngIf="rent != null && isDelete" [rent]="rent" (deleted)="refresh()">
-        </app-rent-delete>
+        <app-waterBill-view-dlg *ngIf="waterBill != null && !isDelete" [waterBill]="waterBill">
+        </app-waterBill-view-dlg>
+        <app-waterBill-delete *ngIf="waterBill != null && isDelete" [waterBill]="waterBill" (deleted)="refresh()">
+        </app-waterBill-delete>
     </div>
 </aside>

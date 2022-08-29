@@ -1,30 +1,30 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { RentModel } from '../../models/rent-model';
-import { RentService } from '../../services/rent.service';
+import { UtilityModel } from '../../models/utility-model';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
-  selector: 'app-rent-delete',
-  templateUrl: './rent-delete.component.html',
-  styleUrls: ['./rent-delete.component.css']
+  selector: 'app-utility-delete',
+  templateUrl: './utility-delete.component.html',
+  styleUrls: ['./utility-delete.component.css']
 })
-export class RentDeleteComponent implements OnInit {
+export class UtilityDeleteComponent implements OnInit {
 
   isBlock = false;
   name: string;
 
-  @Input() rent: RentModel;
+  @Input() utility: UtilityModel;
   @Output() deleted = new EventEmitter();
 
-  constructor(private rentService: RentService, private toastr: ToastrService) { }
+  constructor(private utilityService: UtilityService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.name = this.rent.id;
+    this.name = this.utility.id;
   }
 
   confirmDelete(id: string) {
     this.isBlock = true;
-    this.rentService.deleteRent(id).subscribe(
+    this.utilityService.deleteUtility(id).subscribe(
       (result) => {
         this.isBlock = false;
         this.deleted.emit();

@@ -18,12 +18,16 @@ import { OrderCreateComponent } from 'app/modules/order-management/components/or
 import { ReportsComponent } from 'app/modules/more-management/components/reports/reports.component';
 import { GarbageViewComponent } from 'app/modules/garbage-management/components/garbage-view/garbage-view.component';
 import { RentViewComponent } from 'app/modules/rent-management/components/rent-view/rent-view.component';
+import { WaterBillViewComponent } from 'app/modules/water-bill-management/components/water-bill-view/water-bill-view.component';
+import { UtilityViewComponent } from 'app/modules/utility-management/components/utility-view/utility-view.component';
 
 export const AdminLayoutRoutes: Routes = [
 
     { path: 'dashboard', component: DashboardComponent },
     { path: 'garbage', component: GarbageViewComponent },
     { path: 'rent', component: RentViewComponent },
+    { path: 'waterBill', component: WaterBillViewComponent },
+    { path: 'utility', component: UtilityViewComponent },
     { path: 'inventory', component: InventoryViewComponent },
     { path: 'search', component: SearchViewComponent },
     { path: 'purchase', component: PurchaseViewComponent },
